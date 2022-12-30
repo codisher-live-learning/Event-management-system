@@ -13,3 +13,5 @@ const participantcontroller = require("../controller/participantcontroller");
  participantRouter.get("/contribute",participantcontroller.loadcontributors)
  participantRouter.post("/contribute",participantcontroller.insertContributors)
 module.exports=participantRouter;
+/// is router se kooi matlabb nhi hai because mai party ke andar add akr rha hu ye kuch au rhai
+// check kr rha bro

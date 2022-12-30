@@ -24,7 +24,7 @@ const partySchema = new Schema({
   student:[
     {
       name:String,// tellme about this
-      contribution:String,//this is email of participant
+      email:String,//this is email of participant
     }
 ]
 

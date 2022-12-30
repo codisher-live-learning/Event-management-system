@@ -14,8 +14,8 @@ partyRouter.get("/addparty",partycontroller.addparty)
 partyRouter.get("/partylogin",partycontroller.partylogin)
 partyRouter.post("/addparty",partycontroller.insertparty)
 partyRouter.post("/partylogin",partycontroller.loadparty)
-partyRouter.get("/add_participant",partycontroller.loadaddparticpants)
-partyRouter.post("/add_particpant",partycontroller.add_participants)
 partyRouter.get("/contributors",partycontroller.loadContributors);
-
+partyRouter.get("/add_participant",partycontroller.loadaddparticpants)
+partyRouter.post("/add_participant",partycontroller.add_participants)
+partyRouter.get ("/showparticipants",partycontroller.showparticipants);
 module.exports=partyRouter;

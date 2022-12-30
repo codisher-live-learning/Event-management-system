@@ -1,0 +1,16 @@
+<h1 style="text-align: center; margin-top: 30px;">All Participants</h1>
+<div class="tableDiv">
+  <table class="table table-striped">
+    <td>Name</td>
+    <td>Email</td>
+    <tbody>
+        <%  chutiya.forEach(element => { %>
+            <tr class="head">
+                <th id ="yatn" scope="row"><%= element.name %></th>
+                <td><%= element.email %></td>
+              </tr>
+        <%}) %>
+        
+    </tbody>
+  </table>
+</div>
