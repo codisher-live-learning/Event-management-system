@@ -7,6 +7,7 @@ const participantSchema = new Schema({
   mobile:Number,
   time:String,
   contribution:Number,
+  email:String,
   status:{
     type:String,
     default:"Pending"

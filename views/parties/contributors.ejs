@@ -23,7 +23,13 @@
                     <td><%= element.contribution %></td>
                     <td><%=element.time%></td>
                     <td><%=element.mobile%></td>
+                    <td><%=element.status%></td>
+                    <td><%=element.email%></td>
                   </tr>
+                  
+                  <a href="/getpaisevala?id=<%=element._id%>">
+                    Update
+                  </a>
             <%}) %>
         </tbody>
       </table>

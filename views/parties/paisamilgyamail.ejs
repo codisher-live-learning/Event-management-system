@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method="POST">
+    Paise laya??
+        <tr class="head">
+            <th scope="row"><%= persons.name %></th>
+            <td><%= persons.contribution %></td>
+            <td><%=persons.time%></td>
+            <td><%=persons.mobile%></td>
+            <td><%=persons.status%></td>
+            <td><%=persons.email%></td>
+          </tr>
+          
+    <input type="hidden" name="paisa_id" value="<%=persons._id%>">
+    <button type="Submit">Update</button>
+</form>
+</body>
+</html>

@@ -139,6 +139,30 @@ const showparticipants = async (req,res)=>
     }
 }
 /// update karne ka code
+const getpaisevala= async (req,res)=>
+{
+    const id= req.query.id;
+    try{
+        const paisadenevale= await participantModel.findById({_id:id})
+        res.render('paisamilgyamail',{persons:paisadenevale});
+    }
+    catch(error)
+    {
+        console.log(error.message);
+    }
+}
+const updateStatus= async (req,res)=>
+
+{
+    const id=req.query.id;
+    try{
+           const gotmoney= await participantModel.findByIdAndUpdate({_id:id},{$set:{status:"Done"}})
+           res.render('paisamilgyamail',{persons:gotmoney});
+    }
+    catch(error){
+        console.log(error.message);
+    }
+}
 
 module.exports= {
     loadoptions,
@@ -149,5 +173,7 @@ module.exports= {
     loadaddparticpants,
     add_participants,
     loadContributors,
-    showparticipants
+    showparticipants,
+    getpaisevala,
+    updateStatus
 }
