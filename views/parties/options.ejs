@@ -1,17 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Moments</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap"
+      rel="stylesheet"
+    />
 
-<div class="optionDiv">
+    <!-- .................styling....................... -->
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        color: whitesmoke;
+        font-family: "Noto Sans", sans-serif;
+      }
 
+      body {
+        background-color: hsla(240, 100%, 0%, 1);
+        background-image: radial-gradient(
+            at 37% 100%,
+            hsla(313, 45%, 24%, 1) 0px,
+            transparent 50%
+          ),
+          radial-gradient(
+            at 100% 44%,
+            hsla(257, 80%, 20%, 1) 0px,
+            transparent 50%
+          ),
+          radial-gradient(at 1% 1%, hsla(257, 80%, 20%, 1) 0px, transparent 50%);
+        background-attachment: fixed;
+      }
 
+      /* ................Navbar.................... */
+      nav {
+        display: flex;
+        align-items: center;
+        padding: 30px;
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        justify-content: space-between;
+      }
 
-    <button>
-     <a href="/partylogin">Orgnized Parties</a>
-    </button>
- 
-          
- <button>
-     <a href="/addparty">Organize a party</a> 
- </button>
- <br>
- <br>
+      .logo {
+        display: flex;
+        align-items: center;
+        margin-left: 20px;
+      }
 
-</div>
+      .logo a {
+        font-size: 2.2rem;
+        font-weight: 700;
+        text-decoration: none;
+      }
+
+      .menu {
+        display: flex;
+        align-items: center;
+        height: 100%;
+      }
+
+      .menu ul {
+        display: flex;
+        list-style: none;
+        align-items: center;
+        margin-right: 100px;
+      }
+
+      .menu ul li {
+        margin-left: 70px;
+        font-size: 20px;
+      }
+
+      .menu ul li a {
+        text-decoration: none;
+      }
+
+      /* ..................main section................... */
+      main {
+        margin: 150px 0 0 0;
+        text-align: center;
+      }
+      .welc p {
+        color: rgb(165, 13, 150);
+        font-size: 2rem;
+        text-transform: capitalize;
+        margin-bottom: 25px;
+      }
+      .exc p {
+        font-size: 3rem;
+        text-transform: capitalize;
+        font-weight: 600;
+        margin-bottom: 20px;
+      }
+
+      .eas p {
+        font-size: 1.5rem;
+        margin-bottom: 50px;
+      }
+
+      /* ...................login button................... */
+      .login-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 200px;
+      }
+
+      .login-btn button {
+        padding: 20px 35px;
+        border: none;
+        outline: none;
+        font-size: 1.5rem;
+        font-weight: 600;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+      }
+
+      .btn1 {
+        background: rgb(255, 0, 255);
+        background: -moz-linear-gradient(
+          350deg,
+          rgba(255, 0, 255, 1) 30%,
+          rgba(130, 53, 191, 1) 100%
+        );
+        background: -webkit-linear-gradient(
+          350deg,
+          rgba(255, 0, 255, 1) 30%,
+          rgba(130, 53, 191, 1) 100%
+        );
+        background: linear-gradient(
+          350deg,
+          rgba(255, 0, 255, 1) 30%,
+          rgba(130, 53, 191, 1) 100%
+        );
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ff00ff",endColorstr="#8235bf",GradientType=1);
+
+        margin-right: 50px;
+      }
+
+      .btn2 {
+        color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav>
+      <div class="logo">
+        <a href="/">Moments</a>
+      </div>
+
+      <div class="menu">
+        <ul>
+          <li><a href="/about">About Us</a></li>
+          <li><a href="/contact">Contact Us</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="login-btn">
+      <a href="/partylogin"><button class="btn1">Orgnized Parties</button></a>
+      <a href="/addparty"><button class="btn2">Organize a party</button></a>
+    </div>
+  </body>
+</html>

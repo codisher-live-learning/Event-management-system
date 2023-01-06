@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Moments</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -11,8 +11,9 @@
       href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap"
       rel="stylesheet"
     />
+  
     <style>
-        * {
+      * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -21,6 +22,7 @@
 }
 
 body {
+  
   background-color: hsla(240, 100%, 0%, 1);
   background-image: radial-gradient(
       at 37% 100%,
@@ -30,83 +32,230 @@ body {
     radial-gradient(at 100% 44%, hsla(257, 80%, 20%, 1) 0px, transparent 50%),
     radial-gradient(at 1% 1%, hsla(257, 80%, 20%, 1) 0px, transparent 50%);
   background-attachment: fixed;
+ 
 }
 
 /* ................Navbar.................... */
-nav {
+.navbar{
   display: flex;
   align-items: center;
-  padding: 30px;
+  padding-top: 30px;
+  justify-content: space-between;
   position: sticky;
   top: 0;
-  z-index: 50;
 }
 
 .logo {
   display: flex;
   align-items: center;
-  margin-left: 20px;
+  margin-left: 10px;
+  
 }
 
-.logo a {
+.logo a{
   font-size: 2.2rem;
   font-weight: 700;
   text-decoration: none;
 }
 
-.menu {
+.navbar-links ul{
+  
+  margin: 0;
+  padding: 0;
   display: flex;
-  align-items: center;
-  height: 100%;
+  
+  /* align-items: center; */
 }
 
-.menu ul {
-  display: flex;
+.navbar-links li {
+  /* margin-left: 70px; */
   list-style: none;
-  margin-left: 500px;
-  align-items: center;
+  font-size: 1rem;
 }
 
-.menu ul li {
-  margin-left: 70px;
-  font-size: 20px;
-}
-
-.menu ul li a {
+.navbar-links li a {
   text-decoration: none;
+   display: block;
+  padding: 1rem;
+}
+.toggle-button{
+  position:absolute;
+  top:3rem;
+  right: 1rem;
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+}
+.toggle-button .bar{
+height: 3px;
+width: 100%;
+background-color: white;
+border-radius: 10px;
+}
+
+#participant-login-button a{
+  color: black;
+}
+
+@media (max-width: 600px){
+.toggle-button{
+  display: flex;
+}
+.navbar-links{
+display: none;
+width: 100%;
+}
+.navbar{
+  flex-direction: column;
+  align-items: flex-start;
+}
+.navbar-links ul{
+
+  background-color: rgb(151, 151, 151);
+  background-image: radial-gradient(
+      at 37% 100%,
+      rgb(255, 135, 229) 0px,
+      transparent 50%
+    ),
+    radial-gradient(at 100% 44%, hsl(345, 94%, 65%) 0px, transparent 50%),
+    radial-gradient(at 1% 1%, rgb(230, 35, 214) 0px, transparent 50%);
+  background-attachment: fixed;
+ border-top: 3px solid rgb(0, 0, 0);
+ border-bottom: 3px solid rgb(0, 0, 0);
+ width: 100%;
+
+ flex-direction: column;
+ 
+}
+
+.navbar-links li{
+  text-align: center;
+}
+
+.navbar-links li a{
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid rgb(168, 168, 168);
+  
+}
+.navbar-links.active{
+  display: flex;
+}
+#greeting3,#greeting1{
+display: none;
+  
+}
+#greeting2{
+  position: absolute;
+  top:17rem;
+}
+
+
+#login-button{
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 30.5rem;
+ width: 100%;
+}
+#participant-login-button,#organiser-login-button{
+ margin: 0px 0px;
+}
+
+}
+
+@media (max-width: 375px){
+
+  .toggle-button{
+    position:absolute;
+    top:2.5rem;}
+  
+  .navbar-links{
+  display: none;
+  width: 100%;
+  }
+  .navbar{
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .navbar-links ul{
+    width: 100%;
+    flex-direction: column;
+   
+  }
+  
+  .navbar-links li{
+    text-align: center;
+  }
+  
+  .navbar-links li a{
+    padding: 0.5rem 1rem;
+  }
+  .navbar-links.active{
+    display: flex;
+  }
+  #greeting3,#greeting1{
+  display: none;
+    
+  }
+  #greeting2{
+    position: absolute;
+    top:16rem;
+
+  }
+  
+  
+  #login-button{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    position: absolute;
+    top: 30rem;
+  
+  }
+  #participant-login-button,#organiser-login-button{
+   margin: 0px 0px;
+  }
+
 }
 
 /* ..................main section................... */
 main {
-  margin: 150px 0 0 0;
   text-align: center;
 }
-.welc p {
+
+#greeting1{
+  
   color: rgb(165, 13, 150);
   font-size: 2rem;
   text-transform: capitalize;
   margin-bottom: 25px;
+  /* margin: 0px 30px; */
 }
-.exc p {
-  font-size: 3rem;
+#greeting2{
+  font-size: 2.5rem;
   text-transform: capitalize;
   font-weight: 600;
-  margin-bottom: 20px;
+  /* margin: 0px 30px; */
+  
 }
 
-.eas p {
+#greeting3{
   font-size: 1.5rem;
-  margin-bottom: 50px;
+
+  /* margin: 0px 30px; */
 }
 
 /* ...................login button................... */
-.login-btn {
+#login-button{
   display: flex;
   justify-content: center;
   align-items: center;
+  
 }
 
-.login-btn button {
+#login-button button{
   padding: 20px 35px;
   border: none;
   outline: none;
@@ -118,7 +267,7 @@ main {
   color: black;
 }
 
-.btn1 {
+#organiser-login-button{
   background: rgb(255, 0, 255);
   background: -moz-linear-gradient(
     350deg,
@@ -136,52 +285,114 @@ main {
     rgba(130, 53, 191, 1) 100%
   );
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ff00ff",endColorstr="#8235bf",GradientType=1);
+ margin: 10px 40px;
 
-  margin-right: 50px;
 }
+#participant-login-button{
+  margin: 10px 40px;
+}
+
+/* media query for all greater than  600*/
+@media (min-width: 601px){
+
+  #greeting1{
+    position: absolute;
+    top:10rem;
+    width: 100%;
+
+  }
+  #greeting2{
+    position: absolute;
+    top:15rem;
+    width: 100%;
+    font-size: 3rem;
+  }
+  #greeting3{
+    position: absolute;
+    top:19rem;
+    width: 100%;
+  }
+
+  #login-button{
+    position: absolute;
+    top:28rem;
+    width: 100%;
+  }
+}
+/* media query for all greater than  600px and less than 860px*/
+@media (min-width:601px) and (max-width:860px){
+ 
+  #greeting1{
+   font-size: 1.5rem;
+  }
+  #greeting2{
+    
+    font-size: 2rem;
+
+  }
+
+  
+
+  #greeting3{
+   font-size: 1rem;
+  }
+}
+
+@media(max-width:280px){
+  #login-button button{
+    padding: 20px 10px;
+    font-size: 1.2rem;
+  }
+  
+}
+
     </style>
   </head>
   <body>
     <!-- Navbar -->
-    <nav>
+    <nav class="navbar">
       <div class="logo">
         <a href="/">Moments</a>
       </div>
-
-      <div class="menu">
+      
+       <a href="#" class="toggle-button">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+       </a>
+      
+      <div class="navbar-links">
         <ul>
-          <li><a href="/">Platform</a></li>
-          <li><a href="/">Services</a></li>
-          <li><a href="/">Events</a></li>
-          <li><a href="/">Offer</a></li>
-          <li><a href="/">Contact</a></li>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Offers</a></li>
+          <li><a href="#">Events</a></li>
+          <li><a href="#">Contact</a></li>
         </ul>
       </div>
     </nav>
 
     <!-- ..........main section............. -->
     <main>
-      <div class="welc">
-        <p>Welcome to the party</p>
-      </div>
-      <div class="exc">
-        <p>Exclusive events priceless memories</p>
-      </div>
-      <div class="eas">
-        <p>
+      <div class="division">
+        <p id="greeting1">Welcome to the party</p>
+        <p id="greeting2">Exclusive events, priceless memories</p>
+        <p id="greeting3">
           Easily organise parties and budget your event in a single sitting
-          <br />get all the photos in one go.
+          <br />Get all the photos in one go.
         </p>
       </div>
-        <div class="login-btn">
-                <a href="/options">
-                    <button class="btn-1">
-                        Organizer
-                    </button>
-            <a href="/participantlogin">
-              <button class="btn2">Participant</button>
-          </a>
+        <div id="login-button">
+            <button id="organiser-login-button"><a href="/organizerauth" style="text-decoration: none;"> Organiser Login </a></button>
+            <button id="participant-login-button"><a href="/participantauth" style="text-decoration: none;"> Participant Login </a></button>
         </div>
     </main>
+    <script>
+      const toggleButton =  document.getElementsByClassName("toggle-button")[0]
+const navbarLinks =  document.getElementsByClassName("navbar-links")[0]
+toggleButton.addEventListener('click',()=>{
+    navbarLinks.classList.toggle('active');
+})
+    </script>
   </body>
+  
 </html>

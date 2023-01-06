@@ -1,33 +1,518 @@
 
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
+<!DOCTYPE html>
+<html>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
+
+    <link rel="stylesheet" href="./global.css" />
+    <link rel="stylesheet" href="./index.css" />
+    <title>Moments</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap"
+      rel="stylesheet"
+    />
+
+  <style>
+
+
+
+
+* {
+  padding: 0%;
+  margin: 0%;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  color: whitesmoke;
+}
+
+body {
+  background-color: hsla(257, 100%, 8%, 1);
+  background-image: radial-gradient(
+      at 38% -50%,
+      hsla(271, 30%, 50%, 1) 1px,
+      transparent 35%
+    ),
+    radial-gradient(at 100% 100%, hsla(268, 27%, 30%, 1) 0px, transparent 35%);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  min-height: 100vh;
+ display: flex;
+ flex-direction: column;
+}
+/* ................Navbar.................... */
+.navbar{
+  display: flex;
+  align-items: center;
+  padding-top: 2rem;
+  justify-content: space-between;
+
+  top: 0;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+  
+}
+
+.logo a{
+  font-size: 2.2rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.navbar-links ul{
+  
+  margin: 0;
+  padding: 0;
+  display: flex;
+  
+  /* align-items: center; */
+}
+
+.navbar-links li {
+  /* margin-left: 70px; */
+  list-style: none;
+  font-size: 1rem;
+}
+
+.navbar-links li a {
+  text-decoration: none;
+   display: block;
+  padding: 1rem;
+}
+.toggle-button{
+  position:absolute;
+  top:2.5rem;
+  right: 1rem;
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+}
+.toggle-button .bar{
+height: 2.5px;
+width: 100%;
+background-color: white;
+border-radius: 10px;
+}
+
+/* Central part */
+.parties-con{
+  background: linear-gradient(90deg, #d68b8b, rgba(204, 40, 94, 0.96), #5123f6);
+  margin: 2rem 2rem;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+}
+
+#all-parties{
+  /* background-color: green; */
+  margin: 2rem ;
+  
+}
+#all-parties h1{
+  font-size: 1.5rem;
+}
+.table{
+  background-color: rgb(97, 2, 186);
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 5rem;
+  font-size: 1rem;
+  padding: 1rem 1rem;
+  border-radius: 0px 70px 0px 0px;
+}
+.table-striped{
+  justify-content: center;
+  /* background-color:black; */
+  width: 100%;
+}
+
+.card-buttons{
+padding: 0.5rem;
+}
+
+tr{
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  /* background-color: #fff; */
+  width: 100%;
+}
+td{
+  display: inline;
+  width: 100%;
+  /* background-color: cornflowerblue;
+   */
+ margin: 0.3rem 0rem;
+
+}
+.row-title{
+  display: block;
+  width: 25%;
+}
+.row-separation{
+  display: block;
+  width: 10%;
+}
+.row-data{
+  display: block;
+  width: 100%;
+}
+.btn{
+  margin: 0.5rem 0.3rem;
+}
+
+.delete-btn{
+  position:relative;
+  top: 0.3rem;
+}
 
 
 
 
 
-<h1 style="text-align: center; margin-top: 30px;">All Parties</h1>
-<div class="tableDiv">
-  <table class="table table-striped">
-    <tbody>
-        <%  one.forEach(element => { %>
-          <div class="card" style="width: 20 rem;">
-            <div class="card-body" style="justify-content: center;">
-              <h1 class="card-title"><%=element.name%></h1>
-              <h6 class="card-subtitle mb-2 text-muted">Venue:<%=element.venue%></h6>
-              <p class="card-text">Date:<%=element.date%></p>
-              <p class="card-text">Time: <%=element.time%></p>
-              <p class="card-text">Budget:<%=element.budget%></p>
-            
-                <a  class="btn btn-primary"href="/contribute">Contribute In Party</a>    
-          <!--    <a href="/teacher/edit/<%= element._id %>" class="btn btn-primary">Join This Party</a>-->
-            </div>
 
-          </div>
-        <%}) %>
-    </tbody>
-  </table>
-</div>
+
+
+/* Bottom Part*/
+
+footer {
+  background-color: rgb(131, 105, 137);
+  padding: 18px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  margin-top: auto;
+  text-align: center;
+}
+.row-title{
+  display: block;
+  width: 25%;
+}
+.row-separation{
+  display: block;
+  width: 10%;
+}
+.row-data{
+  display: block;
+  width: 100%;
+}
+
+footer ul{
+  display: flex;
+  list-style: none;
+  width: 100%;
+}
+
+footer ul li{
+  margin-right: 20px;
+  
+}
+
+@media (min-width:601px) and (max-width:820px){
+  .table{
+  margin: 2rem 2.5rem;
+}
+.row-title{
+  width: 50%;
+}
+
+
+footer{
+  display: inline;
+
+}
+footer ul{
+  justify-content: center;
+  
+}
+footer p,footer .en{
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+}
+}
+
+@media (min-width: 375px) and (max-width:600px){
+
+  .table{
+  margin: 2rem 0rem;
+  padding: 0.5rem;
+}
+
+.parties-con{
+  background-color: pink;
+  margin: 2rem 1rem;
+ 
+}
+.row-title{
+  width: 55%;
+}
+
+.btn{
+  text-align: center;
+  display: inline-block;
+  width: 100%;
+ 
+}
+
+
+.toggle-button{
+  display: flex;
+  position:absolute;
+  top:2.5rem;}
+
+.navbar-links{
+display: none;
+width: 100%;
+}
+.navbar{
+  flex-direction: column;
+  align-items: flex-start;
+}
+.navbar-links ul{
+  width: 100%;
+  flex-direction: column;
+}
+
+.navbar-links li{
+  text-align: center;
+}
+
+.navbar-links li a{
+  padding: 1rem 0rem;
+}
+.navbar-links.active{
+  display: flex;
+
+}
+
+footer{
+  display: inline;
+
+}
+footer ul{
+  justify-content: center;
+ 
+}
+footer p,footer .en{
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+  /* text-align: center; */
+}
+
+}
+
+@media(max-width:374px){
+  
+
+  .toggle-button{
+    display: flex;
+    position:absolute;
+    top:2.5rem;}
+ 
+  
+  .navbar-links{
+  display: none;
+  width: 100%;
+  }
+  .navbar{
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .navbar-links ul{
+    width: 100%;
+    flex-direction: column;
+  }
+  
+  .navbar-links li{
+    text-align: center;
+  }
+  
+  .navbar-links li a{
+    padding: 1rem 0rem;
+  }
+  .navbar-links.active{
+    display: flex;
+  }
+/* middle */
+  .table{
+  margin: 2rem 0rem;
+  padding: 0.2rem;
+}
+
+.parties-con{
+  background-color: pink;
+  margin: 2rem 0rem;
+ 
+}
+.row-title{
+  width: 70%;
+}
+
+.btn{
+  text-align: center;
+  display: inline-block;
+  width: 100%;
+ 
+}
+
+/* bottom */
+
+  footer{
+    display: inline;
+  
+  }
+  footer ul{
+    justify-content: center;
+  
+  }
+  footer p,footer .en{
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+  }
+
+}
+
+
 
 
   
+ 
+  
+</style>    
+
+  <body>
+
+        <nav class="navbar">
+      <div class="logo">
+        <a href="/">Moments</a>
+      </div>
+      
+       <a href="#" class="toggle-button">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+       </a>
+      
+      <div class="navbar-links">
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Offers</a></li>
+          <li><a href="#">Events</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+  <main>
+    <div class="parties-con">
+     <div class="division" id="all-parties" >
+      <h1 style="text-align: center;">All Parties</h1>
+    </div>
+    <div class="tableDiv division table">
+        <table class="table-striped">
+          <tbody>
+    
+            <div class="card" style="width: 20 rem">
+              <div class="card-body" style="justify-content: center">
+               <thead> <h1 class="table-row party-name"><%=one.name%>
+                </h1></thead>
+                <tr><td class="row-title"><h3>Venue</h3></td><td class="row-separation">:</td><td><h3 class="row-data"><%=one.venue%>
+                </h3></td></tr>
+                <tr><td class="row-title"><h3>Date</h3></td><td class="row-separation">:</td><td><h3 class="row-data"><%=one.date%>
+                </h3></td></tr>
+                <tr><td class="row-title"><h3>Time</h3></td><td class="row-separation">:</td><td><h3 class="row-data"><%=one.time%>
+                </h3></td></tr>
+                <tr><td class="row-title"><h3>Budget</h3></td><td class="row-separation">:</td><td><h3 class="row-data"><%=one.budget%>
+                </h3></td></tr>
+                <tr>
+              <tr><div >         
+                  <a class="btn contributers" href="/contribute?id=<%=one._id%>"
+                    >Contribute</a
+                  >
+          
+              <a href="/showparticipants?id=<%=one._id%>" class="btn add-participant-btn">Show Participants</a></td>
+                </div>
+              </tr>
+              </div>
+            </tr> 
+            </div>
+          </tbody>
+        </table>
+    </div>
+      </div>
+  </main>
+
+    <footer>
+      <div class="cop">
+        <p>Moments &copy; 2022 All Rights Reserved</p>
+      </div>
+      <div class="en">
+        <img
+          src="https://img.icons8.com/ios-glyphs/30/null/globe-earth--v1.png"
+        />
+        <p>English</p>
+      </div>
+      <div class="term">
+        <p>Terms & privacy</p>
+      </div>
+      <div>
+        <ul>
+          <li>
+            <img src="https://img.icons8.com/metro/30/null/twitter.png" />
+          </li>
+          <li>
+            <img
+              src="https://img.icons8.com/metro/26/null/facebook-new--v2.png"
+            />
+          </li>
+          <li>
+            <img src="https://img.icons8.com/metro/26/null/instagram-new.png" />
+          </li>
+          <li><img src="https://img.icons8.com/metro/26/null/next.png" /></li>
+          <li>
+            <img src="https://img.icons8.com/metro/26/null/linkedin.png" />
+          </li>
+        </ul>
+      </div>
+    </footer>
+    <script>
+      const toggleButton =  document.getElementsByClassName("toggle-button")[0]
+const navbarLinks =  document.getElementsByClassName("navbar-links")[0]
+
+toggleButton.addEventListener('click',()=>{
+    navbarLinks.classList.toggle('active');
+});
+</script>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+<!-- .
+.
+. 
+. 
+. 
+.  -->
+
+

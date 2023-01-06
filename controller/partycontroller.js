@@ -1,5 +1,9 @@
 const participantModel = require("../models/participantModel");
 const partyModel= require("../models/partyModel");
+const loginModel = require("../models/userLoginModel")
+const adminLoginModel= require("../models/adminLoginModel");
+const { find, findById } = require("../models/partyModel");
+const nodemailer=require("nodemailer");
  //// options load karne ka code.............
 const loadoptions = async(req,res)=>
 {
@@ -67,8 +71,22 @@ const loadparty= async(req,res)=>
 {
     const partycode1=req.body.partycode1;
     try{
-         const partywithcode= await partyModel.find({partycode:partycode1});
-         res.render('organizedparties',{student:partywithcode});           
+         const partywithcode= await partyModel.findOne({partycode:partycode1});
+         if(partywithcode)
+             
+                {
+                    const pc= partywithcode.partycode;
+                   if (partycode1==pc)  
+                    {
+                        res.render('organizedparties',{element:partywithcode});  
+                    }
+                    else{
+                        res.render('partylogin',{message:"Invalid Party-Code"});
+                    }
+                }
+         else{
+            res.render('partylogin',{message:"Invalid Party-Code"})
+         }         
 
     }
     catch(error)
@@ -94,16 +112,46 @@ const add_participants = async(req,res)=>
 {
     try{
     const id=req.query.id;
-    var mail=req.body.participant_contri;
+    var mail=req.body.participant_mail;
     const student1=[
         {
                name:req.body.participant_name,
-               email:req.body.participant_mail// its email
+               email:req.body.participant_mail // its email
         }
     ]
      const user = await partyModel.findByIdAndUpdate({_id:id},{$push:{student:student1}});
      const student2 = user.student;
-     res.render('showparticipant',{chutiya:student2});
+     // mail send
+     //send mail
+     var paname=user.name
+     var smail=user.smail
+     var spass=user.spass
+     var emailto = mail
+     var partycode1=user.partycode;
+     var subjectto = "Invitation Email"
+     var message = "You are inivited in the party :=> "+paname+" <=: and you can explore your party with party code::=>  "+partycode1+"  <=: Dont Share this partycode with anyone other wise strictly action will be taken on you "
+     console.log(subjectto + ' ' + message + ' ' + emailto)
+     let transporter = nodemailer.createTransport({
+         host: "smtp.gmail.com",
+         port: 587,
+         secure: false, // true for 465, false for other ports
+         auth: {
+             user: smail, // generated ethereal user
+             pass: spass // generated ethereal password
+         }
+     }); //Sending mail to provided emailid
+     let info = transporter.sendMail({
+             from: smail, // sender address
+             to: emailto, // list of receivers
+             subject: subjectto, // Subject line
+             html: "<h1 style='background-color: rgb(117, 175, 167);padding:50px;width:600px;border-radius: 10px;'>" + message +  "</h1>"
+         },
+         function(error) {
+             if (error)
+                 console.log(error)
+             else
+                 res.render('mailsend',{email:mail});
+         })
   }
   catch(error)
  {
@@ -117,7 +165,14 @@ const loadContributors= async(req,res)=>
     try{
              const partycode1=req.query.partycode;
              const contributors= await participantModel.find({partycode:partycode1})
-             res.render('contributors',{person:contributors})
+             var contribution=0;
+             var previous=0;
+            contributors.forEach(item=>{
+                contribution= previous+item.contribution;
+                previous=contribution;
+   
+             })
+             res.render('contributors',{person:contributors,expenses:previous})
     }
     catch(error)
     {
@@ -152,18 +207,141 @@ const getpaisevala= async (req,res)=>
     }
 }
 const updateStatus= async (req,res)=>
-
 {
-    const id=req.query.id;
+    const id=req.body.paisa_id;
+    const partycode54=req.body.paisa_code;
+    const mail = req.body.paisa_email;
     try{
            const gotmoney= await participantModel.findByIdAndUpdate({_id:id},{$set:{status:"Done"}})
-           res.render('paisamilgyamail',{persons:gotmoney});
+           const user =  await partyModel.findOne({partycode:partycode54})
+
+           //mail send......../.........
+      var paname=user.name
+      var smail=user.smail
+      var spass=user.spass
+      var emailto = mail
+      var partycode1=user.partycode;
+      var subjectto = "Confirmation  Email"
+      var message = "You have contributed in party..."+paname+"..Thanks for your contribution."
+      console.log(subjectto + ' ' + message + ' ' + emailto)
+      let transporter = nodemailer.createTransport({
+          host: "smtp.gmail.com",
+          port: 587,
+          secure: false, // true for 465, false for other ports
+          auth: {
+              user: smail, // generated ethereal user
+              pass: spass // generated ethereal password
+          }
+      }); 
+      //Sending mail to provided emailid
+      let info = transporter.sendMail({
+              from: smail, // sender address
+              to: emailto, // list of receivers
+              subject: subjectto, // Subject line
+              html: "<h1 style='background-color: rgb(117, 175, 167);padding:50px;width:600px;border-radius: 10px;'>" + message +  "</h1>"
+          },
+          function(error) {
+              if (error)
+                  console.log(error)
+              else
+                  res.render('paisamilgyamail',{persons:gotmoney});
+          })
+           
     }
     catch(error){
         console.log(error.message);
     }
 }
+const deletecontributor = async (req,res)=>
+{
+    const id = req.query.id;
+    try
+    {
+             const deleteobj = await participantModel.findByIdAndDelete({_id:id})
+             const partycode1 = deleteobj.partycode;
+             const contributors= await participantModel.find({partycode:partycode1})
+             var contribution=0;
+             var previous=0;
+            contributors.forEach(item=>{
+                contribution= previous+item.contribution;
+                previous=contribution;
+   
+             })
+             res.render('contributors',{person:contributors,expenses:previous})
+    }
+    catch(error)
+    {
+        console.log(error.message)
+    }
+}
+const organizerauth = async (req,res)=>
+{
+    try{
+             res.render('organizerauth')
+    }
+    catch(error)
+    {
+        console.log(error.message)
+    }
+}
+const insertorganizer = async (req,res)=>
+{
+    const nayamurga= new adminLoginModel({
+        name:req.body.name,
+        mobile:req.body.mobile,
+        email:req.body.mail,
+        password:req.body.password,
+        is_admin:1
+    })
+    try
+    {
+        const murga= await nayamurga.save();
+        res.render('organizerauth');
+    }
+    catch(error)
+    {
+        console.log(error.message);
+    }
+}
+const organizerlogin = async (req,res)=>
+{
+    const username= req.body.semail
+    const password= req.body.spassword
+    try{
+        const murga= await adminLoginModel.findOne({email:username})
+        
+         if(murga)
+         {
+            const mpassword= murga.password;
+                 if(password==mpassword) 
+                  {
+                    req.session.admin_id= murga._id
+                     res.render('options')
 
+                   }
+                   else{
+                    res.render('organizerlogin',{message:"Invalid Password"})
+                   }
+         }
+         else{
+            res.render('organizerlogin',{message:"Invalid Credentials"})
+         }
+    }
+    catch(error)
+    {
+          console.log(error.message)
+    }
+}
+const getorganizerlogin= async (req,res)=>
+{
+    try{
+         res.render('organizerlogin')
+    }
+    catch(error)
+    {
+        console.log(error.message)
+    }
+}
 module.exports= {
     loadoptions,
     addparty,
@@ -175,5 +353,10 @@ module.exports= {
     loadContributors,
     showparticipants,
     getpaisevala,
-    updateStatus
+    updateStatus,
+    organizerauth,
+    insertorganizer,
+    organizerlogin,
+    getorganizerlogin,
+    deletecontributor
 }
