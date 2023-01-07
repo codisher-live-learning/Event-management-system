@@ -22,7 +22,14 @@ app.use(express.static('public'))
 app.get("/", function (req,res) {
     res.render("index");
   });
-
+app.get("/team",function (req,res)
+{
+  res.render('team')
+})
+app.get("/contact",function(req,res)
+{
+  res.render('contact')
+})
 // here we use our routers 
 app.use("/",participantRouter)  ;
 app.use("/",partyRouter);
