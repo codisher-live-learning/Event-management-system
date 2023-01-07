@@ -129,7 +129,7 @@ const add_participants = async(req,res)=>
      var emailto = mail
      var partycode1=user.partycode;
      var subjectto = "Invitation Email"
-     var message = "You are inivited in the party :=> "+paname+" <=: and you can explore your party with party code::=>  "+partycode1+"  <=: Dont Share this partycode with anyone other wise strictly action will be taken on you "
+     var message = "You are inivited in the party :=> "+paname+" <=: and you can explore your party with party code::=>  "+partycode1+"  <=:   Dont Share this partycode with anyone other wise strictly action will be taken on you . Link :-https://gdscvbspu-gccp-project-fdcmizzc6a-el.a.run.app/partylogin"
      console.log(subjectto + ' ' + message + ' ' + emailto)
      let transporter = nodemailer.createTransport({
          host: "smtp.gmail.com",
