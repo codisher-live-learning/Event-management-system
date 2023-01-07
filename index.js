@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const participantRouter=require("./router/participantRouter");
 const partyRouter=require("./router/partyRouter");
 ///////////////database connection////////////
-mongoose.connect("mongodb://localhost:27017/party-management", {
+mongoose.connect("mongodb+srv://yatndeep:gccp@moments.vj0ykzt.mongodb.net/test", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
