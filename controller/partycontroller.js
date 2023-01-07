@@ -296,7 +296,7 @@ const insertorganizer = async (req,res)=>
     try
     {
         const murga= await nayamurga.save();
-        res.render('organizerauth');
+        res.redirect('organizerlogin');
     }
     catch(error)
     {

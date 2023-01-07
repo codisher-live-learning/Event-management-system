@@ -90,7 +90,7 @@ const participantsignup= async (req,res)=>
     try
     {
         const murga= await nayamurga.save();
-        res.render('participantauth');
+        res.redirect('murgalogin');
     }
     catch(error)
     {
