@@ -1,12 +1,14 @@
+require('dotenv').config()
 const express = require("express");
 const app = express();
-const port = 8080;
+const port =process.env.PORT|| 8080;
 const mongoose = require('mongoose');
+const mongourl=process.env.DATABASE
 //decalre routers 
 const participantRouter=require("./router/participantRouter");
 const partyRouter=require("./router/partyRouter");
 ///////////////database connection////////////
-mongoose.connect("mongodb+srv://yatndeep:gccp@moments.vj0ykzt.mongodb.net/test", {
+mongoose.connect(mongourl, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
